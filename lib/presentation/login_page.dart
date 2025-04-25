@@ -44,6 +44,21 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
+              const SizedBox(height: 20),
+              const Text('Password', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,)),
+              TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(labelText: 'Password',
+                border: const OutlineInputBorder() 
+                ),            
+                validator: (value) {
+                  if (value == null || value.isEmpty){
+                    return 'Password tidak boleh kosong';
+                  }
+                  return null;
+                },
+              ),
+              
               
             ],
           ), )),
