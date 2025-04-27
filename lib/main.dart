@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1flutter/presentation/home_page.dart';
 import 'package:ucp1flutter/presentation/login_page.dart';
 
 void main() {
@@ -16,22 +17,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LoginPage(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/home': (context) => const HomePage(),
+        
+      },
     );
   }
 }

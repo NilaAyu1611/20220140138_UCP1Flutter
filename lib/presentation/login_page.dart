@@ -25,11 +25,32 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Form(
         child: Padding(
-          padding:const EdgeInsets.all(16.0),
-          child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
+          padding:const EdgeInsets.all(24.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('SELAMAT DATANG KEMBALI', style: TextStyle(fontSize: 20),),
+              const SizedBox(height: 60),                
+                Center(
+                  child: 
+                  Image.asset(
+                    'assets/images/lg.png',
+                      width: 100,
+                      height: 100,                   
+                  ),
+                ),
+             
+              const SizedBox(height: 40),
+                const Text(
+                  'SELAMAT DATANG KEMBALI',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               
               const SizedBox(height: 20),
               const Text('Email', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,)),
@@ -83,7 +104,12 @@ class _LoginPageState extends State<LoginPage> {
              
               
             ],
-          ), )),
+          ),
+
+          )
+          
+           )
+          ),
 
     );
   }
