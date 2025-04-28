@@ -111,7 +111,37 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'No HP',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: phoneController,
+                          decoration: InputDecoration(
+                            hintText: 'No HP',
+                            prefixIcon: const Icon(Icons.phone_outlined, color: Colors.brown),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'No HP tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               )
             ],
