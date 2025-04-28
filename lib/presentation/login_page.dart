@@ -123,7 +123,16 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               const SizedBox(height: 40),
-              ElevatedButton(
+              SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 50, 88, 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )
+                  ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
@@ -132,18 +141,34 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   }
                 },
-                child: Text('Masuk'),
+                child: const Text('Masuk',
+                style: TextStyle(
+                  fontSize: 18,
+                  color:  Color.fromARGB(255, 246, 251, 177),
+                ),
+                ),
+              ),              
               ),
-               TextButton(
-                onPressed: () {
-                  Navigator.push(
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Belum memiliki akun? Silahkan ', style: TextStyle(fontSize: 14),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterPage()),
                   );
-                },
-                child: Text('Belum memiliki akun? Daftar disini!'),
-                ),
-             
+                    },
+                    child:const Text('Daftar disini!',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 171, 156, 1),
+                    ),),
+                  )
+                ],
+              ),        
               
             ],
           ),
