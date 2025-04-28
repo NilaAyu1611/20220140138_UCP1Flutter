@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1flutter/presentation/databarang_page.dart';
+import 'package:ucp1flutter/presentation/datapelanggan_page.dart';
+import 'package:ucp1flutter/presentation/datapiket_page.dart';
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -109,10 +112,10 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.question_answer_outlined,
                   label: "Data Piket",
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const DataPiketPage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DatapiketPage()),
+                    );
                   },
                 ),
               ),
@@ -122,10 +125,10 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.grid_view_outlined,
                   label: "Data Pelanggan",
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const DataPelangganPage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DatapelangganPage()),
+                    );
                   },
                 ),
               ),
@@ -136,10 +139,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.receipt_long_outlined,
             label: "Barang Masuk/Keluar",
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const BarangPage()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DatabarangPage()),
+              );
             },
             fullWidth: true,
           ),
