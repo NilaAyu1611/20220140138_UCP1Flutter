@@ -79,4 +79,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // untuk bagian gambar dibawah header
+   Widget _buildBanner() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.asset(
+          'assets/images/benner.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
 }
