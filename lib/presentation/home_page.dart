@@ -93,4 +93,45 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _buildMenu() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: _menuButton(
+                  icon: Icons.question_answer_outlined,
+                  label: "Data Piket",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DataPiketPage()),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: _menuButton(
+                  icon: Icons.grid_view_outlined,
+                  label: "Data Pelanggan",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DataPelangganPage()),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          
+        ],
+      ),
+    );
+  }
+
 }
