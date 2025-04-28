@@ -10,6 +10,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildHeader(),
+              const SizedBox(height: 20),
+              _buildBanner(),
+              const SizedBox(height: 30),
+              _buildMenu(),
+            ],
+          ),
+        ),
+      ),
+    
+    );
   }
 }
