@@ -128,7 +128,17 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           const SizedBox(height: 20),
-          
+          _menuButton(
+            icon: Icons.receipt_long_outlined,
+            label: "Barang Masuk/Keluar",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const BarangPage()),
+              );
+            },
+            fullWidth: true,
+          ),
         ],
       ),
     );
