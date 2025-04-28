@@ -13,6 +13,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  bool _obscureText = true;
+
   @override
   void initState(){
     super.initState();
@@ -51,14 +53,27 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
+
+                const SizedBox(height: 40),                
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Email',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               
-              const SizedBox(height: 20),
-              const Text('Email', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,)),
+              const SizedBox(height: 8),              
               TextFormField(                
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: const OutlineInputBorder()           
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  prefixIcon: Icon(Icons.email_outlined, color: Colors.brown),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(18),
+                  ),           
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty){
@@ -67,12 +82,37 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
+            
               const SizedBox(height: 20),
-              const Text('Password', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,)),
+              const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Password',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 8),              
               TextFormField(
                 controller: passwordController,
-                decoration: const InputDecoration(labelText: 'Password',
-                border: const OutlineInputBorder() 
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  hintText: 'Password',                  
+                  prefixIcon: Icon(Icons.lock_outline, color: Colors.brown),
+                  suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText; // <<< ini untuk toggle show/hide password
+                    });
+                  },
+                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)
+                  ),                 
                 ),            
                 validator: (value) {
                   if (value == null || value.isEmpty){
@@ -81,7 +121,9 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-               ElevatedButton(
+
+              const SizedBox(height: 40),
+              ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
