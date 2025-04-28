@@ -285,6 +285,25 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 20),
              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Sudah memiliki akun? Silahkan ', style: TextStyle(fontSize: 14),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                    },
+                    child:const Text('Login disini!',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 171, 156, 1),
+                    ),),
+                  )
+                ],
+              ),   
 
             ],
           ),
