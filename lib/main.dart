@@ -22,9 +22,19 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginPage(),
-        '/home': (context) => const HomePage(),
+        // '/home': (context) => const HomePage(),
         
       },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/home') {
+          final args = settings.arguments as String; // kirim email ke home
+          return MaterialPageRoute(
+            builder: (context) => HomePage(email: args),
+          );
+        }
+        return null;
+      },
+
     );
   }
 }

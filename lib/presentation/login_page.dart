@@ -135,9 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(
+                    Navigator.pushReplacementNamed(
                       context, 
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                       '/home',
+                      arguments: emailController.text,
                     );
                   }
                 },
