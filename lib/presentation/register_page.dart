@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1flutter/presentation/home_page.dart';
+import 'package:ucp1flutter/presentation/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -16,6 +18,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _obscurePassword = true;     //kita bedakan dng login
   bool _obscureConfirmPassword = true;
+
+  String? _errorMessage;    
 
   @override
   Widget build(BuildContext context) {
@@ -232,9 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             if (value == null || value.isEmpty) {
                               return 'Konfirmasi password tidak boleh kosong';
                             }
-                            if (value != passwordController.text) {     // validasi antara password dengan konfirmasinya harus sama
-                              return 'Password tidak sama';
-                            }
+                            
                             return null;
                           },
                         ),
@@ -243,6 +245,46 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 40),
+
+              // button Daftar
+              SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 50, 88, 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )
+                  ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    if (passwordController.text != confirmPasswordController.text) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Password tidak sama'),
+                          backgroundColor: Color.fromARGB(255, 50, 88, 2),
+                        ),
+                      );
+                    } else {
+                      Navigator.pushReplacement(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
+                    }
+                  }
+                },
+                child: const Text('Daftar',
+                style: TextStyle(
+                  fontSize: 18,
+                  color:  Color.fromARGB(255, 246, 251, 177),
+                ),
+                ),
+              ),              
+              ),
+              const SizedBox(height: 20),
+             
 
             ],
           ),
