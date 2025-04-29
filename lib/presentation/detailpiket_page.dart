@@ -35,6 +35,43 @@ class _DetailpiketPageState extends State<DetailpiketPage> {
         elevation: 0,
       ),
 
+      // body
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Bagian atas: Tanggal dan email
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  formattedDate,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 101, 137, 1),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 50, 88, 2),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    email,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),            
+          ],
+        ),
+      ),
     );
   }
 }
