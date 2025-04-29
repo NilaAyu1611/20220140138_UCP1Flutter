@@ -10,6 +10,20 @@ class DatapiketPage extends StatefulWidget {
 }
 
 class _DatapiketPageState extends State<DatapiketPage> {
+  late TextEditingController _namaAnggotaController;
+  late TextEditingController _tugasController;
+  
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _namaAnggotaController = TextEditingController(text: widget.email);
+    _tugasController = TextEditingController();
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
