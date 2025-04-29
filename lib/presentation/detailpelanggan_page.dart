@@ -104,7 +104,7 @@ class DetailpelangganPage extends StatelessWidget {
           const SizedBox(height: 32),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red.shade600,
+              backgroundColor: Color.fromARGB(255, 50, 88, 2),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
@@ -117,7 +117,8 @@ class DetailpelangganPage extends StatelessWidget {
                 (route) => false,
               );
             },
-            child: const Text("Selesai", style: TextStyle(fontSize: 16)),
+            child: const Text("Selesai", style: TextStyle(fontSize: 16, color:  Color.fromARGB(255, 246, 251, 177),),
+            ),
           ),                  
         ],
       ),    

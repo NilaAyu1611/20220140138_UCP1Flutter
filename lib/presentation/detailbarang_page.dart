@@ -81,7 +81,7 @@ final String email;
             const Divider(),
             infoRow('Total Harga', formatRupiah(totalHarga)),
 
-            const Spacer(),
+            const SizedBox(height: 35),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
