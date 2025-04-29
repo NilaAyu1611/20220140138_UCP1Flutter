@@ -35,6 +35,33 @@ class _DatabarangPageState extends State<DatabarangPage> {
     final formatter = DateFormat('EEEE, d MMMM yyyy', 'id_ID');
     return formatter.format(date);
   }
+
+   InputDecoration _inputDecoration({String? hintText, Widget? prefixIcon, String? labelText}) {
+    return InputDecoration(
+      hintText: hintText,
+      labelText: labelText,
+      prefixIcon: prefixIcon,
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Color.fromARGB(255, 50, 88, 2)),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+    );
+  }
   
   @override
   Widget build(BuildContext context) {
