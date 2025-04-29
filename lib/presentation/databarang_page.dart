@@ -63,6 +63,23 @@ class _DatabarangPageState extends State<DatabarangPage> {
     );
   }
   
+   void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailbarangPage(
+            tanggal: _formatTanggal(_selectedDate!),
+            jenisTransaksi: _selectedJenisTransaksi!,
+            jenisBarang: _selectedJenisBarang!,
+            jumlahBarang: int.parse(_jumlahBarangController.text),
+            hargaSatuan: int.parse(_hargaSatuanController.text),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
