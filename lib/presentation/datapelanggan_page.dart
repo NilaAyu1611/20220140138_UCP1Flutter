@@ -34,7 +34,22 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
               // Input Nama Cust
               _buildLabeledField(
                   "Nama Cust", _namacustController, "Cust tidak boleh kosong"),
-              const SizedBox(height: 12),              
+              const SizedBox(height: 12),  
+
+              // Email dan No HP dalam satu baris
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildLabeledField("Email", _emailcustController,
+                        "Email tidak boleh kosong"),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _buildLabeledField(
+                        "No Hp", _noHpController, "No Hp tidak boleh kosong"),
+                  ),
+                ],
+              ),                        
             ],
           ),
         ),
