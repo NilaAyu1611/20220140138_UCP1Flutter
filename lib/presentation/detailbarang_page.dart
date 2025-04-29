@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp1flutter/presentation/home_page.dart';
 
 class DetailbarangPage extends StatelessWidget {
   final String tanggal;
@@ -7,6 +8,7 @@ class DetailbarangPage extends StatelessWidget {
   final String jenisBarang;
   final int jumlahBarang;
   final int hargaSatuan;
+final String email;
 
   const DetailbarangPage({
     super.key,
@@ -15,6 +17,7 @@ class DetailbarangPage extends StatelessWidget {
     required this.jenisBarang,
     required this.jumlahBarang,
     required this.hargaSatuan,
+    required this.email,
   });
 
   
@@ -79,6 +82,37 @@ class DetailbarangPage extends StatelessWidget {
             infoRow('Total Harga', formatRupiah(totalHarga)),
 
             const Spacer(),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage(email: email)),
+                (route) => false,
+              );
+            },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: const Text(
+                    'Selesai',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(228, 237, 149, 1),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
           ],
 
       )),

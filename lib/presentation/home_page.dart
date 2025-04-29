@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const DatabarangPage()),
+                MaterialPageRoute(builder: (context) => DatabarangPage(email: email)),
               );
             },
             fullWidth: true,

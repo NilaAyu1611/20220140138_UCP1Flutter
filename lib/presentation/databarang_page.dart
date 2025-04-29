@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp1flutter/presentation/detailbarang_page.dart';
 
 class DatabarangPage extends StatefulWidget {
-  const DatabarangPage({super.key});
+  final String email;
+  
+  const DatabarangPage({super.key, required this.email});
 
   @override
   State<DatabarangPage> createState() => _DatabarangPageState();
@@ -14,6 +17,8 @@ class _DatabarangPageState extends State<DatabarangPage> {
   DateTime? _selectedDate;
   String? _selectedJenisTransaksi;
   String? _selectedJenisBarang;
+   final TextEditingController _jumlahBarangController = TextEditingController();
+  final TextEditingController _hargaSatuanController = TextEditingController();
 
   final List<String> _jenisTransaksiOptions = ['Barang Masuk', 'Barang Keluar'];
   final List<String> _jenisBarangOptions = ['Carrier', 'Sleeping Bag', 'Tenda', 'Sepatu'];
@@ -74,6 +79,7 @@ class _DatabarangPageState extends State<DatabarangPage> {
             jenisBarang: _selectedJenisBarang!,
             jumlahBarang: int.parse(_jumlahBarangController.text),
             hargaSatuan: int.parse(_hargaSatuanController.text),
+             email: widget.email,
           ),
         ),
       );
@@ -200,8 +206,11 @@ class _DatabarangPageState extends State<DatabarangPage> {
                           keyboardType: TextInputType.number,
                           decoration: _inputDecoration(
                             hintText: 'Harga Satuan',
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.only(left: 12, right: 8),
+                          ).copyWith(
+                            prefixIcon: Container(
+                              width: 40, // cukup untuk "Rp."
+                              alignment: Alignment.centerLeft,
+                              padding: const EdgeInsets.only(left: 12),
                               child: Text(
                                 'Rp.',
                                 style: TextStyle(
@@ -209,6 +218,10 @@ class _DatabarangPageState extends State<DatabarangPage> {
                                   color: Colors.grey[800],
                                 ),
                               ),
+                            ),
+                            prefixIconConstraints: const BoxConstraints(
+                              minWidth: 0,
+                              minHeight: 0,
                             ),
                           ),
                           validator: (value) {
@@ -218,6 +231,8 @@ class _DatabarangPageState extends State<DatabarangPage> {
                             return null;
                           },
                         ),
+
+
                       ],
                     ),
                   ),
