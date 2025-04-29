@@ -152,4 +152,56 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
       ),  
     );
   }
+
+    /// Widget reusable untuk membuat field input dengan label
+  Widget _buildLabeledField(
+      String label, TextEditingController controller, String errorMsg) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 6),
+        TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: label,
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide:
+                  const BorderSide(color: Color.fromARGB(255, 72, 109, 4)),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide:
+                  const BorderSide(color: Color.fromARGB(255, 62, 104, 4)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 67, 113, 3), width: 2),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide:
+                  const BorderSide(color: Color.fromARGB(255, 220, 43, 4)),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 220, 43, 4), width: 2),
+            ),
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return errorMsg;
+            }
+            return null;
+          },
+        ),
+      ],
+    );
+  }
+
 }
