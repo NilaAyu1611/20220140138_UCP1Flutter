@@ -20,6 +20,21 @@ class _DetailpiketPageState extends State<DetailpiketPage> {
   Widget build(BuildContext context) {
     final formattedDate = DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(tanggal);     //format tanggal dalam b.indo
 
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+        title: Text(
+          'Detail $tugas',    //Detail appbar mengiktui nama tugas yang sudah ditambahkan
+          style: const TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
+
+    );
   }
 }
