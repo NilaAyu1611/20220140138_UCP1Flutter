@@ -8,8 +8,22 @@ class DatabarangPage extends StatefulWidget {
 }
 
 class _DatabarangPageState extends State<DatabarangPage> {
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: const Color(0xFFFDF6F3),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+        title: const Text('Pendataan Barang'),
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }
