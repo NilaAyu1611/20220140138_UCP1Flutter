@@ -8,8 +8,22 @@ class DatapelangganPage extends StatefulWidget {
 }
 
 class _DatapelangganPageState extends State<DatapelangganPage> {
+  final _formKey = GlobalKey<FormState>();    // kunci untuk form
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: const Color(0xFFFEF9F7),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+        centerTitle: true,
+        title: const Text("Data Pelanggan"),
+        foregroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }
