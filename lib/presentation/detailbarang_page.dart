@@ -1,15 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class DetailbarangPage extends StatefulWidget {
-  const DetailbarangPage({super.key});
+class DetailbarangPage extends StatelessWidget {
+  final String tanggal;
+  final String jenisTransaksi;
+  final String jenisBarang;
+  final int jumlahBarang;
+  final int hargaSatuan;
 
-  @override
-  State<DetailbarangPage> createState() => _DetailbarangPageState();
-}
+  const DetailbarangPage({
+    super.key,
+    required this.tanggal,
+    required this.jenisTransaksi,
+    required this.jenisBarang,
+    required this.jumlahBarang,
+    required this.hargaSatuan,
+  });
 
-class _DetailbarangPageState extends State<DetailbarangPage> {
+  
+  String formatRupiah(int number) {
+    return NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp. ',
+      decimalDigits: 0,
+    ).format(number);
+  }
+
+  Widget infoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+          Text(value, style: const TextStyle(fontSize: 16)),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final totalHarga = jumlahBarang * hargaSatuan;
+
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7F5),
       body: SafeArea(child: Column(
@@ -32,6 +65,20 @@ class _DetailbarangPageState extends State<DetailbarangPage> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 30),
+
+            infoRow('Tanggal', tanggal),
+            const Divider(),
+            infoRow('Jenis Transaksi', jenisTransaksi),
+            const Divider(),
+            infoRow('Jenis Barang', jenisBarang),
+            const Divider(),
+            infoRow('Jumlah Barang', '$jumlahBarang'),
+            const Divider(),
+            infoRow('Harga Satuan', formatRupiah(hargaSatuan)),
+            const Divider(),
+            infoRow('Total Harga', formatRupiah(totalHarga)),
+
+            const Spacer(),
           ],
 
       )),
