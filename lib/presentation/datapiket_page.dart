@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DatapiketPage extends StatefulWidget {
-  const DatapiketPage({super.key});
+  final String email;
+
+  const DatapiketPage({Key? key, required this.email}) : super(key: key);
 
   @override
   State<DatapiketPage> createState() => _DatapiketPageState();
@@ -10,6 +12,23 @@ class DatapiketPage extends StatefulWidget {
 class _DatapiketPageState extends State<DatapiketPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+        centerTitle: true,
+        title: const Text(
+          'Piket Gudang',
+          style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        elevation: 0,
+      ),
+      body: const Center(
+        child: Text('DatapiketPage Content'),
+      ),
+    );
   }
 }
