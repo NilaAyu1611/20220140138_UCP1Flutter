@@ -24,6 +24,21 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
+
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              // Input Nama Cust
+              _buildLabeledField(
+                  "Nama Cust", _namacustController, "Cust tidak boleh kosong"),
+              const SizedBox(height: 12),              
+            ],
+          ),
+        ),
+      ),  
     );
   }
 }
