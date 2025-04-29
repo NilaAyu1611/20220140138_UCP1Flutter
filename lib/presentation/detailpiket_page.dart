@@ -13,9 +13,8 @@ class DetailpiketPage extends StatelessWidget {
     required this.email,
   }) : super(key: key);
 
-}
 
-class _DetailpiketPageState extends State<DetailpiketPage> {
+
   @override
   Widget build(BuildContext context) {
     final formattedDate = DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(tanggal);     //format tanggal dalam b.indo
@@ -68,7 +67,24 @@ class _DetailpiketPageState extends State<DetailpiketPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 30),            
+            const SizedBox(height: 30),     
+
+             // Bagian tugas piket
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 50, 88, 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                tugas,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 212, 240, 177),
+                ),
+              ),
+            ),       
           ],
         ),
       ),
