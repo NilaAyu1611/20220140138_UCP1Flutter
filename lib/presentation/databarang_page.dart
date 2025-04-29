@@ -115,6 +115,73 @@ class _DatabarangPageState extends State<DatabarangPage> {
               ),
               const SizedBox(height: 20),
 
+              //form input jumlah barang dan harga satuan
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Jumlah Barang',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: _jumlahBarangController,
+                          keyboardType: TextInputType.number,
+                          decoration: _inputDecoration(hintText: 'Jumlah Barang'),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Jumlah barang tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Harga Satuan',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: _hargaSatuanController,
+                          keyboardType: TextInputType.number,
+                          decoration: _inputDecoration(
+                            hintText: 'Harga Satuan',
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 12, right: 8),
+                              child: Text(
+                                'Rp.',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[800],
+                                ),
+                              ),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Harga satuan tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+              
+
               
 
             ],
