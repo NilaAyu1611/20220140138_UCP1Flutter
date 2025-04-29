@@ -13,6 +13,11 @@ class _DatabarangPageState extends State<DatabarangPage> {
 
   DateTime? _selectedDate;
   String? _selectedJenisTransaksi;
+  String? _selectedJenisBarang;
+
+  final List<String> _jenisTransaksiOptions = ['Barang Masuk', 'Barang Keluar'];
+  final List<String> _jenisBarangOptions = ['Carrier', 'Sleeping Bag', 'Tenda', 'Sepatu'];
+
 
   Future<void> _pickDate() async {
     final DateTime? picked = await showDatePicker(
@@ -75,7 +80,43 @@ class _DatabarangPageState extends State<DatabarangPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),              
+              const SizedBox(height: 20), 
+
+              // dropdown jenis barang dan jenis trx
+              DropdownButtonFormField<String>(
+                decoration: _inputDecoration(labelText: 'Jenis Transaksi'),
+                value: _selectedJenisTransaksi,
+                items: _jenisTransaksiOptions.map((e) {
+                  return DropdownMenuItem<String>(
+                    value: e,
+                    child: Text(e),
+                  );
+                }).toList(),
+                onChanged: (val) => setState(() {
+                  _selectedJenisTransaksi = val;
+                }),
+                validator: (val) => val == null ? 'Pilih jenis transaksi' : null,
+              ),
+              const SizedBox(height: 20),
+
+              DropdownButtonFormField<String>(
+                decoration: _inputDecoration(labelText: 'Jenis Barang'),
+                value: _selectedJenisBarang,
+                items: _jenisBarangOptions.map((e) {
+                  return DropdownMenuItem<String>(
+                    value: e,
+                    child: Text(e),
+                  );
+                }).toList(),
+                onChanged: (val) => setState(() {
+                  _selectedJenisBarang = val;
+                }),
+                validator: (val) => val == null ? 'Pilih jenis barang' : null,
+              ),
+              const SizedBox(height: 20),
+
+              
+
             ],
           ),
         ),
