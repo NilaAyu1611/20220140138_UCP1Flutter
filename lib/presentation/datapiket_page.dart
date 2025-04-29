@@ -12,6 +12,8 @@ class DatapiketPage extends StatefulWidget {
 class _DatapiketPageState extends State<DatapiketPage> {
   late TextEditingController _namaAnggotaController;
   late TextEditingController _tugasController;
+  DateTime? _selectedDate;
+  final List<Map<String, dynamic>> _listTugas = [];
   
   final _formKey = GlobalKey<FormState>();
 
@@ -20,6 +22,25 @@ class _DatapiketPageState extends State<DatapiketPage> {
     super.initState();
     _namaAnggotaController = TextEditingController(text: widget.email);
     _tugasController = TextEditingController();
+  }
+
+    @override
+  void dispose() {
+    _namaAnggotaController.dispose();
+    _tugasController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _pickDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      setState(() => _selectedDate = picked);
+    }
   }
 
   
@@ -53,6 +74,30 @@ class _DatapiketPageState extends State<DatapiketPage> {
                 controller: _namaAnggotaController,
                 readOnly: true,
                 decoration: _inputDecoration(),
+              ),
+              
+              //form input pilih tanggal
+              const SizedBox(height: 20),
+              const Text('Pilih Tanggal'),
+              const SizedBox(height: 8),
+              GestureDetector(
+                onTap: _pickDate,
+                child: AbsorbPointer(
+                  child: TextFormField(
+                    decoration: _inputDecoration(
+                      prefixIcon: const Icon(Icons.calendar_today_outlined),
+                      hintText: _selectedDate == null
+                          ? 'Pilih Tanggal'
+                          : '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
+                    ),
+                    validator: (value) {
+                      if (_selectedDate == null) {
+                        return 'Tanggal tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
               ),
             ],
           ),
