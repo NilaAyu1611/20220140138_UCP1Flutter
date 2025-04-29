@@ -180,7 +180,26 @@ class _DatabarangPageState extends State<DatabarangPage> {
                 ],
               ),
 
-              
+              const SizedBox(height: 30),
+              //button submit 
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 5,
+                  ),
+                  onPressed: _submitForm,
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 220, 244, 160)),
+                  ),
+                ),
+              ),       
 
               
 
