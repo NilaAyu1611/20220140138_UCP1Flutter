@@ -40,9 +40,24 @@ class _DatapiketPageState extends State<DatapiketPage> {
         ),
         elevation: 0,
       ),
-      body: const Center(
-        child: Text('DatapiketPage Content'),
-      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Nama Anggota'),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _namaAnggotaController,
+                readOnly: true,
+                decoration: _inputDecoration(),
+              ),
+            ],
+          ),
+        ),
+        ),      
     );
   }
 }

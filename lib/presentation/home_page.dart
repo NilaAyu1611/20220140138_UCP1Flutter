@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ucp1flutter/presentation/databarang_page.dart';
 import 'package:ucp1flutter/presentation/datapelanggan_page.dart';
@@ -114,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const DatapiketPage()),
+                      MaterialPageRoute(builder: (context) => DatapiketPage(email: email)),
                     );
                   },
                 ),
