@@ -4,13 +4,19 @@ class DetailpelangganPage extends StatelessWidget {
     final String namacust;
     final String emailcust;
     final String noHp;
+    final String alamat;
+    final String provinsi;
+    final String kodePos;
 
 
   const DetailpelangganPage({
     super.key,
     required this.namacust,
-     required this.emailcust,
+    required this.emailcust,
     required this.noHp,   
+    required this.alamat,
+    required this.provinsi,
+    required this.kodePos,
 
   });
 
@@ -55,6 +61,41 @@ class DetailpelangganPage extends StatelessWidget {
                 Text(noHp),
               ],
             ),
+          ),
+          const SizedBox(height: 24),
+
+          const Text("Alamat", style: TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          _buildReadOnlyField(alamat),
+
+          const SizedBox(height: 16),
+
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Provinsi",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    _buildReadOnlyField(provinsi),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Kode Pos",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    _buildReadOnlyField(kodePos),
+                  ],
+                ),
+              ),
+            ],
           ),          
         ],
       ),    
