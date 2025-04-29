@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1flutter/presentation/home_page.dart';
 
 class DetailpelangganPage extends StatelessWidget {
     final String namacust;
@@ -7,6 +8,8 @@ class DetailpelangganPage extends StatelessWidget {
     final String alamat;
     final String provinsi;
     final String kodePos;
+    final String email;
+
 
 
   const DetailpelangganPage({
@@ -17,6 +20,7 @@ class DetailpelangganPage extends StatelessWidget {
     required this.alamat,
     required this.provinsi,
     required this.kodePos,
+     required this.email,
 
   });
 
@@ -96,7 +100,25 @@ class DetailpelangganPage extends StatelessWidget {
                 ),
               ),
             ],
-          ),          
+          ),  
+          const SizedBox(height: 32),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red.shade600,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              minimumSize: const Size.fromHeight(50),
+            ),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage(email: email)),
+                (route) => false,
+              );
+            },
+            child: const Text("Selesai", style: TextStyle(fontSize: 16)),
+          ),                  
         ],
       ),    
     );
