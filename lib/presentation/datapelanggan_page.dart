@@ -10,6 +10,32 @@ class DatapelangganPage extends StatefulWidget {
 class _DatapelangganPageState extends State<DatapelangganPage> {
   final _formKey = GlobalKey<FormState>();    // kunci untuk form
 
+  // controller untuk input field
+  final _namacustController = TextEditingController();
+  final _emailcustController = TextEditingController();
+  final _noHpController = TextEditingController();
+  final _alamatController = TextEditingController();
+  final _provinsiController = TextEditingController();
+  final _kodePosController = TextEditingController();
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailpelangganPage(
+            nama: _namacustController.text,
+            email: _emailcustController.text,
+            noHp: _noHpController.text,
+            alamat: _alamatController.text,
+            provinsi: _provinsiController.text,
+            kodePos: _kodePosController.text,
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,8 +97,26 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 40),
+              // Tombol SIMPAN
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 50, 88, 2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  minimumSize: const Size.fromHeight(50),
+                ),
+                onPressed: _submitForm,
+                child: const Text(
+                  'Simpan',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color.fromARGB(255, 246, 251, 177),
+                  ),
+                ),
+              ),             
               
-                                     
             ],
           ),
         ),
