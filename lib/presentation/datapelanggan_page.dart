@@ -36,6 +36,15 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
     }
   }
 
+  void _resetForm() {           // Fungsi untuk mengosongkan semua form input
+  _namacustController.clear();
+  _emailcustController.clear();
+  _noHpController.clear();
+  _alamatController.clear();
+  _provinsiController.clear();
+  _kodePosController.clear();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +125,27 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
                   ),
                 ),
               ),             
-              
+              const SizedBox(height: 25),
+
+              // Tombol RESET
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  side:
+                      const BorderSide(color: Color.fromARGB(255, 53, 97, 3)),
+                ),
+                onPressed: _resetForm,
+                child: const Text(
+                  "Reset",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 93, 135, 3),
+                    fontSize: 16,
+                  ),
+                ),
+              ), 
             ],
           ),
         ),
