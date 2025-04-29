@@ -154,6 +154,52 @@ class _DatapiketPageState extends State<DatapiketPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 30),
+
+              //
+              const Center(
+                child: Text(
+                  'Daftar Tugas Piket',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              _listTugas.isEmpty
+                  ? Center(
+                      child: Text(
+                        'Belum ada Data',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    )
+                  : ListView.builder(       //list dari semua daftar tugas yang sudah ditambahkan
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: _listTugas.length,
+                      itemBuilder: (context, index) {
+                        final tugas = _listTugas[index];
+                        return Card(
+                          color: const Color.fromARGB(255, 50, 88, 2),
+                          child: ListTile(
+                            title: Text(
+                              tugas['tugas'],
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 212, 240, 177),
+                              ),
+                            ),
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                              color: Color.fromARGB(255, 12, 205, 73),
+                            ),
+                            onTap: () {                            
+                            },
+                          ),
+                        );
+                      },
+                    ),
             ],
           ),
         ),
