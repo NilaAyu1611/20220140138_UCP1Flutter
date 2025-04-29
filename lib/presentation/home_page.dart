@@ -129,7 +129,8 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const DatapelangganPage()),
+                      MaterialPageRoute(builder: (context) => DatapelangganPage(email: email)),
+                      
                     );
                   },
                 ),

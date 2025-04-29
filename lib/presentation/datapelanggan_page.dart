@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1flutter/presentation/detailpelanggan_page.dart';
 
 class DatapelangganPage extends StatefulWidget {
-  const DatapelangganPage({super.key});
+  final String email;
+
+  const DatapelangganPage({super.key, required this.email});
 
   @override
   State<DatapelangganPage> createState() => _DatapelangganPageState();
@@ -17,6 +20,7 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
   final _alamatController = TextEditingController();
   final _provinsiController = TextEditingController();
   final _kodePosController = TextEditingController();
+  
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
@@ -24,12 +28,13 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
         context,
         MaterialPageRoute(
           builder: (context) => DetailpelangganPage(
-            nama: _namacustController.text,
-            email: _emailcustController.text,
+            namacust: _namacustController.text,
+            emailcust: _emailcustController.text,
             noHp: _noHpController.text,
             alamat: _alamatController.text,
             provinsi: _provinsiController.text,
             kodePos: _kodePosController.text,
+            email: widget.email,
           ),
         ),
       );
