@@ -55,6 +55,23 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
               // Input Alamat
               _buildLabeledField(
                   "Alamat", _alamatController, "Alamat tidak boleh kosong"),
+                  const SizedBox(height: 12),
+
+              // Provinsi dan Kode Pos dalam satu baris
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildLabeledField("Provinsi", _provinsiController,
+                        "Provinsi tidak boleh kosong"),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _buildLabeledField("Kode Pos", _kodePosController,
+                        "Pos tidak boleh kosong"),
+                  ),
+                ],
+              ),
+              
                                      
             ],
           ),
