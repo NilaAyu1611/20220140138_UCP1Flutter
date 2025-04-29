@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1flutter/presentation/detailpiket_page.dart';
 
 class DatapiketPage extends StatefulWidget {
   final String email;
@@ -56,6 +59,11 @@ class _DatapiketPageState extends State<DatapiketPage> {
     }
   } 
 
+   String _formatTanggal(DateTime date) {
+    final formatter = DateFormat('EEEE, d MMMM yyyy', 'id_ID');
+    return formatter.format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +107,7 @@ class _DatapiketPageState extends State<DatapiketPage> {
                       prefixIcon: const Icon(Icons.calendar_today_outlined),
                       hintText: _selectedDate == null
                           ? 'Pilih Tanggal'
-                          : '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
+                          : _formatTanggal(_selectedDate!),
                     ),
                     validator: (value) {
                       if (_selectedDate == null) {
@@ -179,12 +187,12 @@ class _DatapiketPageState extends State<DatapiketPage> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _listTugas.length,
                       itemBuilder: (context, index) {
-                        final tugas = _listTugas[index];
+                        final tugasItem = _listTugas[index];
                         return Card(
                           color: const Color.fromARGB(255, 50, 88, 2),
                           child: ListTile(
                             title: Text(
-                              tugas['tugas'],
+                              tugasItem['tugas'],
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 212, 240, 177),
                               ),
@@ -194,7 +202,17 @@ class _DatapiketPageState extends State<DatapiketPage> {
                               size: 16,
                               color: Color.fromARGB(255, 12, 205, 73),
                             ),
-                            onTap: () {                            
+                            onTap: () {     
+                               Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailpiketPage(
+                                      tugas: tugasItem['tugas'],
+                                      tanggal: tugasItem['tanggal'],
+                                      email: widget.email,
+                                    ),
+                                  ),
+                                );                       
                             },
                           ),
                         );
