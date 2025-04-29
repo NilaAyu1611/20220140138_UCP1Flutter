@@ -123,4 +123,15 @@ class DetailpelangganPage extends StatelessWidget {
       ),    
     );
   }
+    Widget _buildReadOnlyField(String value) {
+    return TextFormField(
+      initialValue: value,
+      readOnly: true,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+  }
 }
