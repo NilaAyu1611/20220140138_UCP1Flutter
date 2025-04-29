@@ -49,7 +49,13 @@ class _DatapelangganPageState extends State<DatapelangganPage> {
                         "No Hp", _noHpController, "No Hp tidak boleh kosong"),
                   ),
                 ],
-              ),                        
+              ),
+               const SizedBox(height: 12),
+
+              // Input Alamat
+              _buildLabeledField(
+                  "Alamat", _alamatController, "Alamat tidak boleh kosong"),
+                                     
             ],
           ),
         ),
